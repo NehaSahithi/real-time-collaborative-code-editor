@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--cc-bg: #1e1e1e;
+	--cc-bg-soft: #252526;
+	--cc-bg-deep: #111111;
+	--cc-panel: #1b1b1b;
+	--cc-panel-strong: #2d2d2d;
+	--cc-border: #3c3c3c;
+	--cc-border-soft: #2a2a2a;
+	/* Slightly desaturated primary vs pure #007acc */
+	--cc-accent: #0a7ab8;
+	--cc-accent-soft: #5cb3e8;
+	--cc-text: #d4d4d4;
+	--cc-text-dim: #9ca3af;
+	--cc-success: #3db39c;
+	--cc-warning: #c9c48a;
+	--cc-danger: #e05252;
+	--cc-shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.38);
+	--cc-shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background:
+		radial-gradient(circle at top left, rgba(10, 122, 184, 0.1), transparent 30%),
+		radial-gradient(circle at top right, rgba(61, 179, 156, 0.06), transparent 24%),
+		linear-gradient(180deg, #1e1e1e 0%, #181818 100%);
+	color: var(--cc-text);
+	font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+	font-synthesis: none;
+}
+
+.cc-workbench {
+	background: linear-gradient(180deg, rgba(32, 32, 32, 0.98), rgba(24, 24, 24, 0.98));
+	border: 1px solid var(--cc-border-soft);
+	box-shadow: var(--cc-shadow-elevated);
+}
+
+.cc-workbench-rail {
+	background: linear-gradient(180deg, #252526 0%, #1f1f1f 100%);
+	border: 1px solid var(--cc-border-soft);
+}
+
+.cc-panel {
+	background: linear-gradient(180deg, var(--cc-panel) 0%, #171717 100%);
+	border: 1px solid var(--cc-border-soft);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.cc-panel-header {
+	background: linear-gradient(180deg, #2a2a2a 0%, #252526 100%);
+	border-bottom: 1px solid var(--cc-border-soft);
+}
+
+.cc-statusbar {
+	background: linear-gradient(180deg, #007acc 0%, #006bb3 100%);
+	color: #f5f5f5;
+}
+
+.cc-chip {
+	background: #2d2d2d;
+	border: 1px solid #3c3c3c;
+	color: #d4d4d4;
+}
+
+.cc-chip-active {
+	background: rgba(0, 122, 204, 0.18);
+	border-color: rgba(0, 122, 204, 0.65);
+	color: #cfe9ff;
+}
+
+.cc-input {
+	background: #1e1e1e;
+	border: 1px solid #3c3c3c;
+	color: var(--cc-text);
+	outline: none;
+}
+
+.cc-input:focus {
+	border-color: var(--cc-accent);
+	box-shadow: 0 0 0 2px rgba(10, 122, 184, 0.22);
+}
+
+.cc-input::placeholder {
+	color: #6b7280;
+}
+
+.cc-button {
+	background: #2d2d2d;
+	border: 1px solid #3c3c3c;
+	color: #d4d4d4;
+	transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.cc-button:hover {
+	background: #37373d;
+	border-color: #5a5a5a;
+}
+
+.cc-button-primary {
+	background: linear-gradient(180deg, #0c5a8a 0%, var(--cc-accent) 100%);
+	border: 1px solid rgba(92, 179, 232, 0.45);
+	color: #ffffff;
+}
+
+.cc-button-primary:hover {
+	background: linear-gradient(180deg, #0d6ba5 0%, #0d8fd4 100%);
+}
+
+.cc-button-ghost {
+	background: transparent;
+	border: 1px solid var(--cc-border);
+	color: #d4d4d4;
+}
+
+.cc-surface {
+	background: linear-gradient(180deg, rgba(37, 37, 38, 0.96), rgba(30, 30, 30, 0.96));
+	border: 1px solid var(--cc-border-soft);
+}
+
+.cc-accent-text {
+	color: var(--cc-accent-soft);
+}
+
+.cc-activity-line {
+	background: linear-gradient(90deg, rgba(0, 122, 204, 0.18), rgba(0, 122, 204, 0));
+	border-left: 2px solid rgba(0, 122, 204, 0.95);
+}
+
+.cc-activity-line-latest {
+	background: linear-gradient(90deg, rgba(78, 201, 176, 0.2), rgba(78, 201, 176, 0));
+	border-left: 2px solid rgba(78, 201, 176, 0.95);
+}
+
+.cc-remote-cursor {
+	border-left: 2px solid currentColor;
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.cc-remote-cursor-label {
+	margin-left: 4px;
+	padding: 1px 6px;
+	border-radius: 9999px;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	background: rgba(15, 15, 15, 0.95);
+	border: 1px solid currentColor;
+}
+
+.cc-remote-cursor-0 {
+	color: #4ec9b0;
+	background: rgba(78, 201, 176, 0.16);
+}
+
+.cc-remote-cursor-1 {
+	color: #569cd6;
+	background: rgba(86, 156, 214, 0.16);
+}
+
+.cc-remote-cursor-2 {
+	color: #c586c0;
+	background: rgba(197, 134, 192, 0.16);
+}
+
+.cc-remote-cursor-3 {
+	color: #dcdcaa;
+	background: rgba(220, 220, 170, 0.16);
+}
+
+.cc-remote-cursor-4 {
+	color: #ce9178;
+	background: rgba(206, 145, 120, 0.16);
+}
+
+.cc-remote-cursor-5 {
+	color: #9cdcfe;
+	background: rgba(156, 220, 254, 0.16);
+}
+
+@layer utilities {
+	.cc-page-shell {
+		@apply min-h-screen bg-gradient-to-br from-[#1e1e1e] via-[#181818] to-[#111111] text-slate-100 antialiased;
+	}
+
+	.cc-link {
+		@apply font-medium text-[#2aa1ff] transition-colors hover:text-[#cfe9ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007acc]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1e1e1e] rounded-sm;
+	}
+
+	.cc-card-elevated {
+		@apply rounded-2xl border border-[#2a2a2a]/90;
+		box-shadow: var(--cc-shadow-soft);
+	}
+}
+
+::selection {
+	background: rgba(10, 122, 184, 0.32);
+	color: #f8fafc;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+@keyframes cc-modal-in {
+	from {
+		opacity: 0;
+		transform: translateY(8px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes cc-backdrop-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.cc-modal-backdrop {
+	animation: cc-backdrop-in 0.2s ease-out forwards;
+}
+
+.cc-modal-panel {
+	animation: cc-modal-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Thin dark scrollbars (WebKit + Firefox) */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #3f3f46 #1a1a1a;
+}
+
+*::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #1a1a1a;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: #3f3f46;
+	border-radius: 9999px;
+	border: 2px solid #1a1a1a;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: #52525b;
+}
+
+.cc-dropdown-enter {
+	animation: cc-dropdown-in 0.16s ease-out forwards;
+}
+
+@keyframes cc-dropdown-in {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+

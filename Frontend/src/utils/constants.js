@@ -1,0 +1,73 @@
+export const API_BASE_URL =
+	import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+
+/** Origin for static assets (e.g. uploaded avatars at `/uploads/...`). */
+export const API_ORIGIN = String(API_BASE_URL || "").replace(/\/api\/?$/i, "");
+
+export const SOCKET_URL =
+	import.meta.env.VITE_SOCKET_URL || "http://localhost:5000";
+
+export const STORAGE_KEYS = {
+	TOKEN: "cc_token",
+	USER: "cc_user",
+	RECENT_ROOMS: "cc_recent_rooms",
+	STARRED_ROOMS: "cc_starred_rooms",
+	GUEST_IDENTITY: "cc_guest_identity"
+};
+
+export const LANGUAGES = [
+	{ label: "JavaScript", value: "javascript" },
+	{ label: "TypeScript", value: "typescript" },
+	{ label: "Python", value: "python" },
+	{ label: "Java", value: "java" },
+	{ label: "C++", value: "cpp" },
+	{ label: "C", value: "c" },
+	{ label: "Go", value: "go" },
+	{ label: "Rust", value: "rust" },
+	{ label: "HTML", value: "html" },
+	{ label: "CSS", value: "css" }
+];
+
+export const ROOM_LANGUAGES = [
+	{ label: "JavaScript", value: "javascript" },
+	{ label: "C++", value: "cpp" },
+	{ label: "Python", value: "python" },
+	{ label: "Java", value: "java" },
+	{ label: "C", value: "c" }
+];
+
+export const DEFAULT_LANGUAGE = LANGUAGES[0].value;
+
+export const SOCKET_EVENTS = {
+	JOIN_ROOM: "JOIN_ROOM",
+	ROOM_STATE: "ROOM_STATE",
+	ROOM_JOIN_ERROR: "ROOM_JOIN_ERROR",
+	LEAVE_ROOM: "LEAVE_ROOM",
+	CODE_CHANGE: "CODE_CHANGE",
+	CODE_UPDATE: "CODE_UPDATE",
+	FILE_CHANGE: "FILE_CHANGE",
+	FILE_CREATE: "FILE_CREATE",
+	FILE_CREATE_ERROR: "FILE_CREATE_ERROR",
+	FILE_DELETE: "FILE_DELETE",
+	FILE_DELETE_ERROR: "FILE_DELETE_ERROR",
+	FILE_RENAME: "FILE_RENAME",
+	FILE_RENAMED: "FILE_RENAMED",
+	FILE_DELETED: "FILE_DELETED",
+	FILE_LIST_UPDATE: "FILE_LIST_UPDATE",
+	CURSOR_MOVE: "CURSOR_MOVE",
+	CURSOR_UPDATE: "CURSOR_UPDATE",
+	SEND_MESSAGE: "SEND_MESSAGE",
+	NEW_MESSAGE: "NEW_MESSAGE",
+	USER_TYPING: "USER_TYPING",
+	USER_JOINED: "USER_JOINED",
+	USER_LEFT: "USER_LEFT",
+	ROOM_USERS: "ROOM_USERS",
+	ROOM_DELETED: "ROOM_DELETED"
+};
+
+export const DEFAULT_EDITOR_CODE = `// Welcome to the collaborative editor\n// Start coding with your teammates in real time.\n\nfunction greet(name) {\n  return \`Hello, \${name}!\`;\n}\n\nconsole.log(greet("Team"));\n`;
+
+export const MAX_RECENT_ROOMS = 6;
+export const DEFAULT_MAX_PARTICIPANTS = 8;
+export const MIN_ROOM_PARTICIPANTS = 2;
+export const MAX_ROOM_PARTICIPANTS = 50;

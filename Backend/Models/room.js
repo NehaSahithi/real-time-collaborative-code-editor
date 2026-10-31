@@ -1,0 +1,143 @@
+import { Schema, model } from "mongoose";
+
+const roomUserSchema = new Schema(
+    {
+        id: {
+            type: String,
+            required: true,
+        },
+        name: {
+            type: String,
+            required: true,
+        },
+        status: {
+            type: String,
+            default: "online",
+        },
+    },
+    { _id: false }
+);
+
+const roomFileSchema = new Schema(
+    {
+        id: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        name: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        language: {
+            type: String,
+            default: "javascript",
+        },
+        code: {
+            type: String,
+            default: "",
+        },
+        lastEditedBy: {
+            type: String,
+            default: "",
+        },
+        lastEditedAt: {
+            type: Date,
+            default: null,
+        },
+    },
+    { _id: false }
+);
+
+const roomSchema = new Schema(
+    {
+        roomId: {
+            type: String,
+            required: [true, "roomId is required"],
+            unique: true,
+            uppercase: true,
+            trim: true,
+        },
+        name: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        roomName: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        language: {
+            type: String,
+            required: [true, "language is required"],
+            default: "javascript",
+        },
+        currentLanguage: {
+            type: String,
+            default: "javascript",
+        },
+        code: {
+            type: String,
+            default: "",
+        },
+        visibility: {
+            type: String,
+            enum: ["private", "public"],
+            default: "private",
+        },
+        maxParticipants: {
+            type: Number,
+            min: 2,
+            max: 50,
+            default: 8,
+        },
+        users: {
+            type: [roomUserSchema],
+            default: [],
+        },
+        files: {
+            type: [roomFileSchema],
+            default: [],
+        },
+        activeFileId: {
+            type: String,
+            default: "",
+        },
+        createdBy: {
+            type: String,
+            default: "",
+        },
+    },
+    {
+        timestamps: true,
+        versionKey: false,
+    }
+);
+
+roomSchema.pre("validate", function normalizeRoomName() {
+    if (!this.name && this.roomName) {
+        this.name = this.roomName;
+    }
+
+    if (!this.roomName && this.name) {
+        this.roomName = this.name;
+    }
+
+    if (!this.currentLanguage && this.language) {
+        this.currentLanguage = this.language;
+    }
+
+    if (!this.language && this.currentLanguage) {
+        this.language = this.currentLanguage;
+    }
+});
+
+// Add indexes for better query performance
+// Note: roomId index is already created via unique: true on the field
+roomSchema.index({ createdAt: -1 });
+roomSchema.index({ createdBy: 1 });
+roomSchema.index({ "users.id": 1 });
+
+export const RoomModel = model("Room", roomSchema);
