@@ -20,7 +20,7 @@ A full-stack web application enabling multiple users to collaborate on code in r
 
 View the deployed live application at:
 
-https://real-time-collaborative-code-editor-one.vercel.app
+https://codecollab-livid.vercel.app
 
 ##  Prerequisites
 - **Node.js** (v16 or higher)
