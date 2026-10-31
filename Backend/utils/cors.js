@@ -30,7 +30,18 @@ export const isAllowedOrigin = (origin = "") => {
     return true;
   }
 
-  return allowedOrigins.includes(normalizeOrigin(origin)) || isLocalDevOrigin(origin);
+  const normalized = normalizeOrigin(origin);
+
+  if (allowedOrigins.includes(normalized) || isLocalDevOrigin(origin)) {
+    return true;
+  }
+
+  // Allow Vercel production and preview domains
+  if (/^https:\/\/([a-zA-Z0-9_\-]+\.)*vercel\.app$/i.test(normalized)) {
+    return true;
+  }
+
+  return false;
 };
 
 export const corsOriginHandler = (origin, callback) => {
