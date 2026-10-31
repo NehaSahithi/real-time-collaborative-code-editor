@@ -52,8 +52,9 @@ Frontend/
 To run the frontend locally, you need an `.env` file in the root of the `Frontend` directory with the following variables:
 
 ```properties
-VITE_API_BASE_URL=<your_backend_api_url>
-VITE_SOCKET_URL=<your_backend_socket_url>
+VITE_API_URL=https://real-time-collaborative-code-editor-vw4o.onrender.com/
+VITE_API_BASE_URL=https://real-time-collaborative-code-editor-vw4o.onrender.com/api
+VITE_SOCKET_URL=https://real-time-collaborative-code-editor-vw4o.onrender.com
 ```
 
 ## Scripts

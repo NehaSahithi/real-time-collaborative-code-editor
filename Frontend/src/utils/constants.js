@@ -1,11 +1,22 @@
+const rawApiUrl = (
+	import.meta.env.VITE_API_URL ||
+	import.meta.env.VITE_API_BASE_URL ||
+	"https://real-time-collaborative-code-editor-vw4o.onrender.com"
+)
+	.trim()
+	.replace(/\/+$/, "");
+
+const baseOrigin = rawApiUrl.replace(/\/api\/?$/i, "");
+
 export const API_BASE_URL =
-	import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+	import.meta.env.VITE_API_BASE_URL || `${baseOrigin}/api`;
 
 /** Origin for static assets (e.g. uploaded avatars at `/uploads/...`). */
-export const API_ORIGIN = String(API_BASE_URL || "").replace(/\/api\/?$/i, "");
+export const API_ORIGIN =
+	baseOrigin || String(API_BASE_URL || "").replace(/\/api\/?$/i, "");
 
 export const SOCKET_URL =
-	import.meta.env.VITE_SOCKET_URL || "http://localhost:5000";
+	import.meta.env.VITE_SOCKET_URL || baseOrigin || "http://localhost:5000";
 
 export const STORAGE_KEYS = {
 	TOKEN: "cc_token",

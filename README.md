@@ -78,8 +78,9 @@ npm install
 Create a `.env` file in the `Frontend` directory:
 
 ```env
-VITE_API_BASE_URL=
-VITE_SOCKET_URL=
+VITE_API_URL=https://real-time-collaborative-code-editor-vw4o.onrender.com/
+VITE_API_BASE_URL=https://real-time-collaborative-code-editor-vw4o.onrender.com/api
+VITE_SOCKET_URL=https://real-time-collaborative-code-editor-vw4o.onrender.com
 ```
 
 ##  Running the Application
